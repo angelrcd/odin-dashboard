@@ -37,6 +37,16 @@ p, h1, h2, h3, h4, h5, h6 {
 
   --nav-width: 300px;
   --header-height: 150px;
+  --svg-color-filter: invert(0);
+}
+
+:root.dark {
+  --nav-bg-color: #1992D4;
+  --header-bg-color: #1E293B;
+  --main-bg-color: #0F172A;
+  --card-text-color: #a3aab6;
+  color: #FFFFFF;
+  --svg-color-filter: invert(1);
 }
 
 body {
@@ -140,7 +150,7 @@ header {
   border: none;
   padding: 0.3em 2em;
   background-color: var(--main-bg-color);
-  p
+  color: inherit;
 }
 
 .notification, .swap-theme-button{
@@ -198,14 +208,14 @@ main {
 .projects-container .card,
 .announcements-container,
 .trending-container {
-  background: white;
+  background: var(--header-bg-color);
   border-radius: 10px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
 .card {
   min-height: 250px;
-  border-left: 10px solid orange;
+  border-left: 10px solid var(--nav-bg-color);
   padding: 1.5em;
   display: flex;
   flex-direction: column;
@@ -216,6 +226,17 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 1em;
+}
+
+.card-buttons-container button {
+  border: none;
+  background: none;
+}
+
+.card-buttons-container img {
+  filter: var(--svg-color-filter);
+  height: 2rem;
+  aspect-ratio: 1/1;
 }
 
 .announcements-container,
@@ -252,4 +273,12 @@ main {
   aspect-ratio: 1/1;
   border-radius: 50%;
   margin-bottom: 1em;
+}
+
+
+/* svg colors */
+.swap-theme-button img,
+.notification img,
+label[for="search"] img {
+  filter: var(--svg-color-filter);
 }
